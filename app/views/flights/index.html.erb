@@ -1,4 +1,7 @@
 <h1>Current flights</h1>
+<div class="w-100">
+    <%= render "form" %>
+</div>
 <% if (@flights.length > 0) %>
 <% @flights.each do |flight| %>
 <%= render flight %>

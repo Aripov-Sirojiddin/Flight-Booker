@@ -1,0 +1,21 @@
+<form class="form-inline w-100">
+    <%= form_with url: "/search", method: :get do |f| %>
+    <div class="form-field">
+        <%= f.text_field :departing_flight, placeholder: :departing_flight%>
+    </div>
+
+    <div class="form-field">
+        <%= f.text_field :arriving_flight, placeholder: :arriving_flight%>
+    </div>
+
+    <div class="form-field">
+        <%= f.date_field :arriving_flight%>
+    </div>
+
+    <div class="form-field">
+        <%= f.number_field :number_of_passengers, in: 1..10, step: 1, placeholder: :number_of_passengers%>
+    </div>
+
+    <%= f.submit :Search%>
+    <%end%>
+</form>
