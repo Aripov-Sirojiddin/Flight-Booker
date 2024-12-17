@@ -1,9 +1,21 @@
 <h1>Current flights</h1>
 <div class="w-100">
-    <%= render "form" %>
+    <%= button_to "View All", root_path, method: :get %>
+    <%= render "form"%>
 </div>
+
 <% if (@flights.length > 0) %>
-<% @flights.each do |flight| %>
-<%= render flight %>
-<% end %>
+  <%= form_with url: "/", method: :get do |f| %>
+    <% @flights.each do |flight| %>
+      <div>
+        <%= f.radio_button :flight_id, flight.id, id: "flight_#{flight.id}"%>
+        <%= f.label "#{flight.id}" do %>
+          <%= render flight %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= f.submit :Book %>
+  <% end %>
+<% else %>
+  <p>Sorry, no flights were found. :(</p>
 <% end %>

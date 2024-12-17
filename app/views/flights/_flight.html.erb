@@ -1,8 +1,8 @@
 <div class="flight-info">
     <br>
-    <p>Flight from <%= get_airport_code(flight.departure_airport_id) %> to <%= get_airport_code(flight.arrival_airport_id) %></p>
-    <p>Flight duration: <%= flight.duration %></p>
-    <p>Flight starting-time: <%= flight.start %></p>
-    <p>Flight landing-time: <%= flight.finish %></p>
+    <p>Flight <%= flight.id %></p>
+    <p>From <%= get_airport_code(flight.departure_airport_id) %> to <%= get_airport_code(flight.arrival_airport_id) %> is <%= flight.duration %> hours long.</p>
+    <p>Plane departs <%= get_airport_code(flight.departure_airport_id) %> at <%= flight.start %>,</p>
+    <p>and lands at <%= get_airport_code(flight.arrival_airport_id) %> around <%= flight.finish %>.</p>
     <br>
 </div>

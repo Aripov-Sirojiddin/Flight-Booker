@@ -1,15 +1,15 @@
 <form class="form-inline w-100">
-    <%= form_with url: "/search", method: :get do |f| %>
+    <%= form_with url: flights_path, method: :get do |f| %>
     <div class="form-field">
-        <%= f.text_field :departing_flight, placeholder: :departing_flight%>
+        <%= f.text_field :departure_airport, placeholder: :departure_airport%>
     </div>
 
     <div class="form-field">
-        <%= f.text_field :arriving_flight, placeholder: :arriving_flight%>
+        <%= f.text_field :arrival_airport, placeholder: :arrival_airport%>
     </div>
 
     <div class="form-field">
-        <%= f.date_field :arriving_flight%>
+        <%= f.date_field :date_of_departure%>
     </div>
 
     <div class="form-field">
