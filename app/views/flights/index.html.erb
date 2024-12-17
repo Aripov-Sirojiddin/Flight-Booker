@@ -1,0 +1,6 @@
+<h1>Current flights</h1>
+<% if (@flights.length > 0) %>
+<% @flights.each do |flight| %>
+<%= render flight %>
+<% end %>
+<% end %>

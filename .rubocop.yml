@@ -1,8 +1,198 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+require:
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rails
+  - rubocop-rspec
+  - ./lib/custom_cops/rolemodel/form_error_response.rb
+  - ./lib/custom_cops/rolemodel/rspec_debug_metadata.rb
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - node_modules/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - lib/templates/**/*
+  NewCops: enable
+
+# ==== Capybara ====
+
+Capybara/SpecificFinders:
+  Enabled: false
+
+# ==== Layout ====
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/ArrayAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+# ==== Lint ====
+
+# Not enough configuration to allow basic arithmetic order of operations while
+# disallowing mixing less common operators
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: false
+
+Lint/Loop:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Severity: info
+
+Lint/SuppressedException:
+  Enabled: false
+
+Lint/UnusedBlockArgument:
+  Severity: refactor
+  AutoCorrect: false
+
+Lint/UnusedMethodArgument:
+  Severity: refactor
+  AutoCorrect: false
+
+Lint/UselessAssignment:
+  Severity: refactor
+  AutoCorrect: false
+
+# ==== Metrics ====
+
+Metrics:
+  Severity: refactor
+
+Metrics/AbcSize:
+  Enabled: false
+
+# RSpec tests and rake tasks are expected to have
+# large blocks, so exclude them from this cop.
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - 'config/**/*'
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+# ==== Naming ====
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
+# ==== Rails ====
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+# ==== RSpec ====
+
+# Message may be confusing
+RSpec/BeEq:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/ExampleWithoutDescription:
+  EnforcedStyle: single_line_only
+
+# Would like to enable this, but it flags expect('String').to appear_before('Other String')
+RSpec/ExpectActual:
+  Enabled: false
+
+RSpec/ExpectInHook:
+  Enabled: false
+
+RSpec/IndexedLet:
+  Max: 3
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NamedSubject:
+  EnforcedStyle: named_only
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/NoExpectationExample:
+  # Method name prefixes that are assumed to be expectations. Feel free to
+  # expand this list if one you want to use isn't already here.
+  AllowedPatterns:
+    - ^expect_
+    - ^assert_
+    - ^verify_
+    - ^audit_
+    - ^check_
+
+RSpec/NotToNot:
+  Enabled: false
+
+# ==== RSpec/Rails ====
+
+RSpec/Rails/InferredSpecType:
+  Enabled: false
+
+# ==== Style ====
+
+Style/Documentation:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
